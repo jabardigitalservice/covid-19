@@ -16,11 +16,16 @@
     <div class="bg-white shadow">
       <div class="container mx-auto px-2">
         <div class="flex px-3 py-4">
-          <img class="block h-10 mx-auto mr-4" src="@/assets/logo.jpg" alt>
-          <div class="text-left flex-grow">
-            <p class="text-sm leading-normal">Pusat Informasi &amp; Koordinasi COVID-19</p>
-            <p class="text-sm text-gray-700">Provinsi Jawa Barat</p>
-          </div>
+          <a href="/">
+            <img class="block h-10 mx-auto mr-4" src="@/assets/logo.jpg" alt>
+          </a>
+
+          <a href="/">
+            <div class="text-left flex-grow">
+              <p class="text-sm leading-normal">Pusat Informasi &amp; Koordinasi COVID-19</p>
+              <p class="text-sm text-gray-700">Provinsi Jawa Barat</p>
+            </div>
+          </a>
         </div>
       </div>
     </div>

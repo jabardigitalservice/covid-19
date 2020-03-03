@@ -53,7 +53,7 @@ export default {
   },
 
   metaInfo: {
-    title: 'Article Detail'
+    title: 'Informasi Terbaru'
   },
 
   computed: mapGetters({

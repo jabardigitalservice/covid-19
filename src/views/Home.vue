@@ -18,7 +18,7 @@
             </div>
 
             <div class="w-1/3">
-              <router-link to="/events">
+              <router-link to="/">
                 <div class="h-full p-3 py-4  text-center text-gray-700">
                   <i class="fas fa-phone text-2xl" />
                   <p class="text-sm mt-1">Nomor Darurat</p>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="w-1/3">
-              <router-link to="/thankyou">
+              <router-link to="/">
                 <div class="h-full p-3 py-4 text-center text-gray-700">
                   <i class="fas fa-map text-2xl" />
                   <p class="text-sm mt-1">Klinik Terdekat</p>

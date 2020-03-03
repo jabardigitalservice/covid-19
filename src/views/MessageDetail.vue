@@ -13,7 +13,7 @@
             </div>
             <div class="text-left flex-grow">
               <p class="text-sm leading-normal">{{ item['title'] }}</p>
-              <p class="text-sm text-gray-600">{{ formatDateShort(item['published_at'].toDate()) }}</p>
+              <p class="text-sm text-gray-600">{{ formatDateTimeShort(item['published_at'].toDate()) }}</p>
             </div>
           </div>
 
@@ -44,7 +44,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { ContentLoader } from 'vue-content-loader'
-import { formatDateShort } from '@/lib/date'
+import { formatDateTimeShort } from '@/lib/date'
 import { analytics } from '@/lib/firebase'
 
 export default {
@@ -66,7 +66,7 @@ export default {
   },
 
   methods: {
-    formatDateShort,
+    formatDateTimeShort,
 
     async fetchItem (id) {
       await this.$store.dispatch('messages-detail/fetchItem', { id: id })
