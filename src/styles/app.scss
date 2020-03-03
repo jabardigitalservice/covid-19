@@ -1,0 +1,45 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+@import 'elements/transitions';
+
+body {
+  background-color: #F2F5F7;
+  padding-bottom: 60px;
+}
+
+body.loading {
+  // background: #399F4F;
+}
+
+.no-pull-refresh {
+  overscroll-behavior-y: none;
+}
+
+a.router-link-exact-active {
+  color: #399F4F;
+}
+
+.home-banner-list {
+  .item {
+    div {
+      //
+    }
+  }
+}
+
+.body-content {
+  p, ul, ol, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+  }
+
+  li {
+    list-style: disc;
+    margin-left: 2rem;
+  }
+
+  a {
+    color: #009BDA;
+  }
+}
