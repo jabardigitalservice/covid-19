@@ -13,3 +13,9 @@ export const firebaseConfig = {
   measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
   publicVapidKey: process.env.VUE_APP_FIREBASE_PUBLIC_VAPID_KEY
 }
+
+export const PHONE_NUMBERS = {
+  KEMENKES_HOME: '021-5210-411',
+  KEMENKES_PHONE: '0812 12 12 3119',
+  DINKES_JABAR: '0811 2093 306'
+}
