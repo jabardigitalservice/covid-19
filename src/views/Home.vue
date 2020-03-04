@@ -106,9 +106,9 @@ export default {
         {
           icon: 'fas fa-phone text-2xl text-green-500',
           title: 'Call Center',
-          subtitle: PHONE_NUMBERS.KEMENKES_HOME,
+          subtitle: PHONE_NUMBERS.CALL_CENTER,
           tooltip: 'Klik untuk melakukan panggilan telepon',
-          to: `tel:${PHONE_NUMBERS.KEMENKES_HOME}`
+          to: `tel:${PHONE_NUMBERS.CALL_CENTER}`
         },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
@@ -148,7 +148,7 @@ export default {
         }
       ],
 
-      numberOfResponse: 632
+      numberOfResponse: 63
     }
   }
 }
