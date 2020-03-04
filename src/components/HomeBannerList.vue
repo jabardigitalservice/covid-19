@@ -1,16 +1,16 @@
 <template>
   <div class="home-banner-list">
     <template v-if="!loading">
-      <carousel class="sm:mx-2" :autoplay="true" :autoplayTimeout="4000" :pagination-enabled="false" :per-page="1" :mouse-drag="false" :loop="true">
+      <carousel :autoplay="true" :autoplayTimeout="4000" :pagination-enabled="false" :per-page="1" :mouse-drag="false" :loop="true">
         <slide v-for="item in items" :key="item.id" class="item">
           <img class="w-full" :src="item.url" />
         </slide>
       </carousel>
     </template>
     <template v-else>
-      <div class="bg-white sm:mx-2 p-4">
+      <div class="bg-white p-8">
         <content-loader :speed="2">
-          <rect x="0" y="0" rx="0" ry="0" width="100%" height="220" />
+          <rect x="0" y="0" rx="0" ry="0" width="100%" height="300px" />
         </content-loader>
       </div>
     </template>
