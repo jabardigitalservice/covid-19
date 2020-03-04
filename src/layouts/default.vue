@@ -15,7 +15,7 @@
 
     <div class="bg-white shadow">
       <div class="container mx-auto px-2">
-        <div class="flex px-3 py-4">
+        <div class="flex items-center px-3 py-4">
           <a href="/">
             <img class="block h-10 mx-auto mr-4" src="@/assets/logo.jpg" alt>
           </a>
