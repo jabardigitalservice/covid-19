@@ -5,19 +5,17 @@
         <p class="text-leading text-grey-darker">Informasi Terbaru</p>
       </div>
 
-      <div class="bg-white shadow p-4">
+      <div class="p-8 rounded-lg bg-white shadow">
         <template v-if="!loading">
-          <div class="flex">
-            <div class="flex items-center block mx-auto mr-4">
-              <i class="fas fa-check-circle text-brand-green text-lg" />
-            </div>
-            <div class="text-left flex-grow">
-              <p class="text-sm leading-normal">{{ item['title'] }}</p>
-              <p class="text-sm text-gray-600">{{ formatDateTimeShort(item['published_at'].toDate()) }}</p>
-            </div>
+          <div class="">
+            <p class="text-2xl font-bold leading-normal">{{ item['title'] }}</p>
+            <p class="text-base text-gray-700">{{ formatDateTimeShort(item['published_at'].toDate()) }}</p>
           </div>
-
-          <div class="text-sm leading-normal mt-5 body-content" v-html="formatContent(item['content'])"></div>
+          <br>
+          <img v-if="item.image" :src="item.image"
+              class="block mb-4 rounded-lg shadow-lg">
+          <div class="text-base leading-normal mt-5 body-content"
+              v-html="formatContent(item['content'])"></div>
 
           <template v-if="item['action_url']">
             <div class="my-2">
@@ -30,8 +28,7 @@
           <content-loader
             :speed="2"
             primaryColor="#f3f3f3"
-            secondaryColor="#ecebeb"
-          >
+            secondaryColor="#ecebeb">
             <rect x="0" y="15" rx="0" ry="0" width="100%" height="15" />
             <rect x="0" y="45" rx="0" ry="0" width="100%" height="75" />
           </content-loader>
