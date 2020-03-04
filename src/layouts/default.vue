@@ -2,7 +2,7 @@
   <div>
     <div v-if="showPopupNotification" class="bg-brand-yellow-darkest">
       <div class="container mx-auto">
-        <div class="flex px-6 py-4">
+        <div class="flex flex-wrap px-6 py-4">
           <div class="text-sm w-full">
             Izinkan notifikasi mengirim pesan
             <button @click="allowNotification" class="ml-2 bg-brand-blue text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
