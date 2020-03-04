@@ -7,7 +7,10 @@
              style="flex: 0 0 360px">
           <home-card>
             <home-card-title>
-              Nomor Darurat Pelaporan
+              Nomor Darurat Pelaporan<br>
+              <small class="text-base text-gray-600 font-normal">
+                Klik untuk melakukan panggilan
+              </small>
             </home-card-title>
             <primary-actions :actions="actionsCall"/>
             <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
@@ -25,7 +28,7 @@
           <home-card>
             <home-card-title>
               Angka Kejadian di Jawa Barat<br>
-              <small class="text-base text-gray-600 uppercase font-bold tracking-widest">
+              <small class="text-base text-gray-600 uppercase font-bold tracking-wide">
                 Per {{latestCasualtyStatDate}}
               </small>
             </home-card-title>
@@ -105,21 +108,21 @@ export default {
           title: 'Call Center',
           subtitle: PHONE_NUMBERS.KEMENKES_HOME,
           tooltip: 'Klik untuk melakukan panggilan telepon',
-          to: `tel://${PHONE_NUMBERS.KEMENKES_HOME}`
+          to: `tel:${PHONE_NUMBERS.KEMENKES_HOME}`
         },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
           title: 'Kemenkes RI',
           subtitle: PHONE_NUMBERS.KEMENKES_PHONE,
           tooltip: 'Klik untuk melakukan panggilan telepon',
-          to: `tel://${PHONE_NUMBERS.KEMENKES_PHONE}`
+          to: `tel:${PHONE_NUMBERS.KEMENKES_PHONE}`
         },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
           title: 'Dinkes Jabar',
           subtitle: PHONE_NUMBERS.DINKES_JABAR,
           tooltip: 'Klik untuk melakukan panggilan telepon',
-          to: `tel://${PHONE_NUMBERS.DINKES_JABAR}`
+          to: `tel:${PHONE_NUMBERS.DINKES_JABAR}`
         }
       ],
 
