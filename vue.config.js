@@ -1,4 +1,8 @@
 module.exports = {
+  devServer: {
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 8080
+  },
   pwa: {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
