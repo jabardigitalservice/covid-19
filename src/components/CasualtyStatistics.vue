@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ul class="flex flex-col justify-start items-start md:flex-row md:justify-center md:items-start">
+    <ul class="casualty-statistics">
       <li v-for="(stat, index) in stats" :key="index"
-         :class="['w-full rounded-lg mb-4 flex flex-row justify-between items-center md:p-5 md:block md:flex-1 md:text-center', `border border-solid border-${stat.color} md:border-none`]">
-        <h6 class="px-6 py-4 mb-2 text-base uppercase tracking-widest text-gray-900 font-bold">
+         :class="['casualty-statistics__item', `border border-solid border-${stat.color}`]">
+        <h6 class="p-4 sm:mb-2 md:p-0 lg:p-4 lg:mb-0 text-base uppercase tracking-widest text-gray-900 font-bold">
           {{stat.title}}<br>
           <small v-if="stat.subtitle">
             {{stat.subtitle}}
           </small>
         </h6>
         <span role="count"
-              :class="['px-6 py-4 text-5xl font-bold', `text-${stat.color}`, `border-l border-solid border-${stat.color} md:border-none`]">
+              :class="['px-6 py-0 text-5xl font-bold', `text-${stat.color}`, `border-l border-solid border-${stat.color} sm:border-none`]">
           {{stat.value}}
         </span>
         <p v-if="stat.description">
@@ -32,6 +32,35 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.casualty-statistics {
+  & {
+    @apply p-4 flex flex-col justify-start items-start;
+  }
 
+  @screen sm {
+    @apply flex-row justify-center items-start;
+  }
+
+  @screen lg {
+    @apply flex flex-col justify-start items-start;
+  }
+}
+
+.casualty-statistics__item {
+  @apply w-full rounded-lg mb-4
+  flex flex-row justify-between items-center;
+
+  @screen sm {
+    @apply p-5 block flex-1 text-center
+    border-0;
+  }
+
+  @screen lg {
+    @apply w-full rounded-lg mb-4 py-1
+    flex flex-row justify-between items-center
+    border
+    text-left;
+  }
+}
 </style>
