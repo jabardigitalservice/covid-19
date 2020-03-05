@@ -1,9 +1,12 @@
 <template>
-  <div class="home-banner-list">
+  <div>
     <template v-if="!loading">
-      <carousel :autoplay="true" :autoplayTimeout="4000" :pagination-enabled="false" :per-page="1" :mouse-drag="false" :loop="true">
-        <slide v-for="item in items" :key="item.id" class="item">
-          <img class="w-full" :src="item.url" />
+      <carousel v-bind="carouselConfig">
+        <slide v-for="item in items"
+              :key="item.id"
+              class="banner-slide">
+          <img role="bg" :src="item.url" />
+          <img role="main" :src="item.url" />
         </slide>
       </carousel>
     </template>
@@ -24,15 +27,77 @@ import { ContentLoader } from 'vue-content-loader'
 import { mapGetters } from 'vuex'
 
 export default {
+  name: 'HomeBannerList',
   components: {
     Carousel,
     Slide,
     ContentLoader
   },
+  data () {
+    return {
+      carouselConfig: {
+        autoplay: true,
+        autoplayTimeout: 4000,
+        paginationEnabled: true,
+        paginationColor: '#90a4ae',
+        paginationActiveColor: '#00b0ff',
+        paginationSize: 12,
+        perPage: 1,
+        mouseDrag: true,
+        loop: true
+      }
+    }
+  },
 
-  computed: mapGetters({
-    loading: 'home-banners/loading',
-    items: 'home-banners/items'
-  })
+  computed: {
+    ...mapGetters({
+      loading: 'home-banners/loading',
+      items: 'home-banners/items'
+    })
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.banner-slide {
+  padding: 50%;
+  @apply relative flex flex-row justify-center items-center;
+
+  > img[role="bg"] {
+    @supports (filter: blur(4px)) {
+      filter: blur(4px) grayscale(33%) opacity(0.2);
+    }
+    @supports not(filter: blur(4px)) {
+      opacity: 0.2;
+    }
+    @apply absolute w-full h-full
+    object-contain object-cover object-top;
+  }
+
+  > img[role="main"] {
+    @apply absolute w-full h-full
+    object-contain object-contain;
+  }
+}
+
+@screen md {
+  .banner-slide {
+    padding: 30%;
+  }
+}
+</style>
+
+<style lang="scss">
+@screen sm {
+  .VueCarousel-wrapper {
+    @apply rounded-lg overflow-hidden shadow-xl;
+  }
+}
+.VueCarousel-pagination {
+  background-color: transparent !important;
+}
+.VueCarousel-dot-container {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+</style>

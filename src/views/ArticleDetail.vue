@@ -1,10 +1,14 @@
 <template>
   <div class="messages">
-    <div class="container mx-auto">
-      <div class="w-full lg:flex px-4 mb-4 mt-4">
-        <p class="text-leading text-grey-darker">Informasi Terbaru</p>
-      </div>
-
+    <div class="container mx-auto max-w-4xl">
+      <h3 class="my-8 px-8 md font-bold text-xl">
+        <router-link to="/">
+          <i class="mr-4 align-middle fa fa-chevron-left fa-lg text-brand-blue"></i>
+          <span class="align-middle">
+            Kembali
+          </span>
+        </router-link>
+      </h3>
       <div class="p-8 rounded-lg bg-white shadow">
         <template v-if="!loading">
           <div class="">
@@ -13,7 +17,7 @@
           </div>
           <br>
           <img v-if="item.image" :src="item.image"
-              class="block mb-4 rounded-lg shadow-lg">
+              class="block mb-8 rounded-lg shadow-lg">
           <div class="text-base leading-normal mt-5 body-content"
               v-html="formatContent(item['content'])"></div>
 

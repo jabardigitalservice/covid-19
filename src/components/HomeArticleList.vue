@@ -10,6 +10,14 @@
             </a>
             <p class="mb-5 text-base text-gray-700">{{ formatDateTimeShort(item['published_at'].toDate()) }}</p>
             <div class="article-content" v-html="trimContent(item.content)"></div>
+            <br>
+            <div class="clearfix">
+              <a :href="getArticlePath(item)"
+                  @click.prevent="onClick($event, item)"
+                  class="float-right font-bold uppercase text-sm text-right tracking-widest text-blue-400 hover:text-brand-blue-darkest">
+                Selengkapnya
+              </a>
+            </div>
           </div>
       </div>
     </template>

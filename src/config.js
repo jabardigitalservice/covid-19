@@ -15,6 +15,7 @@ export const firebaseConfig = {
 }
 
 export const PHONE_NUMBERS = {
+  CALL_CENTER: '119',
   KEMENKES_HOME: '021-5210-411',
   KEMENKES_PHONE: '0812 12 12 3119',
   DINKES_JABAR: '0811 2093 306'
