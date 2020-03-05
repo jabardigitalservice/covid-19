@@ -1,6 +1,9 @@
 import { db } from '../../lib/firebase'
 
-const getRef = () => db.collection('infographics').orderBy('published_date')
+const getRef = () => db
+  .collection('infographics')
+  .orderBy('published_date', 'desc')
+
 const handleQuerySnapshotArray = async (docs) => {
   const arr = []
   if (docs && !docs.empty) {
@@ -40,7 +43,6 @@ export const actions = {
   },
   fetchPreviousItems ({ commit }, { last, perPage = 8 }) {
     return getRef()
-      .orderBy('published_date')
       .endBefore(last)
       .limit(perPage)
       .get()
@@ -51,7 +53,6 @@ export const actions = {
   },
   fetchNextItems ({ commit }, { last, perPage = 8 }) {
     return getRef()
-      .orderBy('published_date')
       .startAfter(last)
       .limit(perPage)
       .get()
