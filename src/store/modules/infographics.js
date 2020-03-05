@@ -32,7 +32,22 @@ export const mutations = {
 }
 
 export const actions = {
-  fetchItems ({ commit }, { perPage = 8 }) {
+  fetchItemById (_, { id }) {
+    return db
+      .collection('infographics')
+      .doc(id)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          return {
+            ...doc.data(),
+            id: doc.id
+          }
+        }
+        return null
+      })
+  },
+  fetchItems (_, { perPage = 8 }) {
     return getRef()
       .limit(perPage)
       .get()
@@ -41,7 +56,7 @@ export const actions = {
         return arr
       })
   },
-  fetchPreviousItems ({ commit }, { last, perPage = 8 }) {
+  fetchPreviousItems (_, { last, perPage = 8 }) {
     return getRef()
       .endBefore(last)
       .limit(perPage)
@@ -51,7 +66,7 @@ export const actions = {
         return arr
       })
   },
-  fetchNextItems ({ commit }, { last, perPage = 8 }) {
+  fetchNextItems (_, { last, perPage = 8 }) {
     return getRef()
       .startAfter(last)
       .limit(perPage)
