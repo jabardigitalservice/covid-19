@@ -49,6 +49,11 @@
           </home-card>
         </div>
       </div>
+      <div class="md:mx-0 mt-12 clearfix">
+        <template v-if="infographic && infographic.images.length">
+          <InfographicItemDetail :infographic="infographic"/>
+        </template>
+      </div>
     </div>
   </main>
 </template>
@@ -58,8 +63,8 @@ import { PHONE_NUMBERS } from '../config'
 
 import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
-import PrimaryActions from '../components/PrimaryActions'
 import CasualtyStatistics from '../components/CasualtyStatistics'
+import InfographicItemDetail from '../components/InfographicItemDetail'
 
 const HomeCard = {
   functional: true,
@@ -100,10 +105,10 @@ export default {
   components: {
     HomeBannerList,
     HomeArticleList,
-    PrimaryActions,
     HomeCard,
     HomeCardTitle,
-    CasualtyStatistics
+    CasualtyStatistics,
+    InfographicItemDetail
   },
 
   metaInfo: {
@@ -158,8 +163,18 @@ export default {
         }
       ],
 
-      numberOfResponse: 63
+      numberOfResponse: 63,
+
+      infographic: null
     }
+  },
+
+  created () {
+    this.$store.dispatch('infographics/fetchItems', {
+      perPage: 1
+    }).then(items => {
+      if (items && items.length) this.infographic = items[0]
+    })
   }
 }
 </script>
