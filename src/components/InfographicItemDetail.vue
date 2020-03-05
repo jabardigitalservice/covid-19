@@ -1,8 +1,11 @@
 <template>
-  <div>
-    <div class="p-8 md:p-0 flex flex-row justify-start items-start">
-      <i class="hidden md:inline-block md:mr-4 fa fa-image fa-2x relative opacity-25" style="top: 3px;"></i>
-      <h3 class="mb-4 font-bold text-3xl text-gray-900 leading-tight">
+  <div class="rounded-lg bg-white shadow-lg overflow-hidden">
+    <div class="p-8">
+      <header class="flex items-center text-brand-blue-darkest">
+        <i class="mr-4 fa fa-image fa-2x relative opacity-25"></i>
+        <span class="font-bold uppercase text-base tracking-widest leading-none">Infografik</span>
+      </header>
+      <h3 class="mt-4 font-bold text-3xl text-gray-900 leading-tight">
         {{infographic.title}}<br>
         <small class="font-normal text-gray-600">{{infographic.subtitle}}</small>
       </h3>
@@ -11,7 +14,6 @@
           :key="index"
           :src="image"
          class="block w-full object-contain object-top">
-    <br>
   </div>
 </template>
 
