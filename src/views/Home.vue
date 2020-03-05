@@ -52,6 +52,14 @@
       <div class="md:mx-0 mt-12 clearfix">
         <template v-if="infographic && infographic.images.length">
           <InfographicItemDetail :infographic="infographic"/>
+          <br>
+          <router-link tag="a"
+                        to="/infographics"
+                        class="float-right inline-block px-6 py-4 bg-brand-blue hover:bg-brand-blue-lighter font-bold text-white tracking-wider rounded-full shadow-lg">
+            <span>
+              Lihat juga infografik lainnya
+            </span>
+          </router-link>
         </template>
       </div>
     </div>
