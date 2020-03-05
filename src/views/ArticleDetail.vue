@@ -2,12 +2,12 @@
   <div class="messages">
     <div class="container mx-auto max-w-4xl">
       <h3 class="my-8 px-8 md font-bold text-xl">
-        <router-link to="/">
+        <a class="cursor-pointer" @click.prevent="$router.back()">
           <i class="mr-4 align-middle fa fa-chevron-left fa-lg text-brand-blue"></i>
           <span class="align-middle">
             Kembali
           </span>
-        </router-link>
+        </a>
       </h3>
       <div class="p-8 rounded-lg bg-white shadow">
         <template v-if="!loading">

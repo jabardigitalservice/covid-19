@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .banner-slide {
-  padding: 50%;
+  padding: 28.125%;
   @apply relative flex flex-row justify-center items-center;
 
   > img[role="bg"] {
@@ -77,12 +77,6 @@ export default {
   > img[role="main"] {
     @apply absolute w-full h-full
     object-contain object-contain;
-  }
-}
-
-@screen md {
-  .banner-slide {
-    padding: 30%;
   }
 }
 </style>
