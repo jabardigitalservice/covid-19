@@ -155,7 +155,7 @@ export default {
         // },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
-          title: 'Dinkes Jabar<br><small>Pertanyaan Umum</small>',
+          title: 'Dinkes Jabar<br><small>(Pertanyaan Umum)</small>',
           subtitle: PHONE_NUMBERS.DINKES_JABAR,
           tooltip: 'Klik untuk melakukan panggilan telepon',
           to: `tel:${PHONE_NUMBERS.DINKES_JABAR}`
