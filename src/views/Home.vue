@@ -6,13 +6,18 @@
         <div class="lg:pr-8"
              style="flex: 0 0 360px">
           <home-card>
-            <home-card-title>
-              Nomor Darurat Pelaporan<br>
-              <small class="text-base text-gray-600 font-normal">
-                Klik untuk melakukan panggilan
-              </small>
-            </home-card-title>
-            <primary-actions :actions="actionsCall"/>
+            <h3 class="cursor:pointer text-center py-8 hover:bg-gray-200">
+              <span class="relative text-2xl uppercase font-bold tracking-wide">
+                <i class="absolute fas fa-phone-alt text-gray-700 text-xl" style="right: calc(100% + 0.5rem); top: 4px;"></i>
+                Call Center
+              </span>
+              <br>
+              <a href="tel:119"><strong class="text-5xl pt-8 tracking-widest">119</strong></a>
+              <p class="text-gray-700 mt-4">
+                (Klik untuk melakukan panggilan)
+              </p>
+            </h3>
+            <!-- <primary-actions :actions="actionsCall"/> -->
             <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
               <span>
                 Pertanyaan Terlayani
@@ -77,8 +82,13 @@ const HomeCard = {
 const HomeCardTitle = {
   functional: true,
   render (h, context) {
+    const staticClass = context.data.staticClass || {}
+    const classes = [
+      '-m-4 mb-4 p-8 text-left text-2xl font-bold border-b border-solid border-gray-200',
+      staticClass
+    ]
     return (
-      <h3 class="-m-4 mb-4 p-8 text-left text-2xl font-bold border-b border-solid border-gray-200">
+      <h3 class={classes}>
         {context.children}
       </h3>
     )
