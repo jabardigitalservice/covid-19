@@ -3,7 +3,7 @@
     <div class="container sm:py-8 sm:px-4 md:px-8 max-w-6xl mx-auto">
       <home-banner-list/>
       <div class="lg:flex flex-wrap flex-row justify-start items-start">
-        <div class="lg:pr-8"
+        <div class="lg:pr-8 lg:self-stretch"
              style="flex: 0 0 360px">
           <home-card>
             <h3 class="cursor:pointer text-center py-8 hover:bg-gray-200">
@@ -13,9 +13,6 @@
               </span>
               <br>
               <a href="tel:119"><strong class="text-5xl pt-8 tracking-widest">119</strong></a>
-              <p class="text-gray-700 mt-4">
-                (Klik untuk melakukan panggilan)
-              </p>
             </h3>
             <!-- <primary-actions :actions="actionsCall"/> -->
             <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
@@ -41,6 +38,27 @@
           </home-card>
         </div>
         <div class="flex-1">
+          <div v-if="infographic"
+               class="mt-8">
+            <div class="p-8 py-4 md:rounded-tl-lg md:rounded-tr-lg rounded-bl-none rounded-br-none bg-gray-800 flex justify-between items-center">
+              <h5 class="font-bold text-2xl text-white">
+                Infografis
+              </h5>
+              <router-link to="/infographics"
+                          class="text-white uppercase font-bold tracking-widest opacity-75 hover:opacity-100">
+                Lainnya
+              </router-link>
+            </div>
+            <div class="flex flex-col md:flex-row justify-start items-stretch">
+              <div class="flex-auto">
+                <InfographicItemPreview :infographic="infographic"
+                                        class="flex-auto rounded-none md:rounded-bl-lg md:rounded-br-lg"/>
+              </div>
+            </div>
+          </div>
+          <home-card>
+            <NearestHospitalLocation/>
+          </home-card>
           <home-card>
             <home-card-title>
               Berita Terbaru
@@ -50,17 +68,6 @@
         </div>
       </div>
       <div class="md:mx-0 mt-12 clearfix">
-        <template v-if="infographic && infographic.images.length">
-          <InfographicItemDetail :infographic="infographic"/>
-          <br>
-          <router-link tag="a"
-                        to="/infographics"
-                        class="float-right inline-block px-6 py-4 bg-brand-blue hover:bg-brand-blue-lighter font-bold text-white tracking-wider rounded-full shadow-lg">
-            <span>
-              Lihat juga infografik lainnya
-            </span>
-          </router-link>
-        </template>
       </div>
     </div>
   </main>
@@ -72,7 +79,8 @@ import { PHONE_NUMBERS } from '../config'
 import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
 import CasualtyStatistics from '../components/CasualtyStatistics'
-import InfographicItemDetail from '../components/InfographicItemDetail'
+import InfographicItemPreview from '../components/InfographicItemPreview'
+import NearestHospitalLocation from '../components/NearestHospitalLocation'
 
 const HomeCard = {
   functional: true,
@@ -116,7 +124,8 @@ export default {
     HomeCard,
     HomeCardTitle,
     CasualtyStatistics,
-    InfographicItemDetail
+    InfographicItemPreview,
+    NearestHospitalLocation
   },
 
   metaInfo: {
@@ -173,16 +182,22 @@ export default {
 
       numberOfResponse: 63,
 
-      infographic: null
+      infographic: null,
+      strippedInfographics: []
     }
   },
 
-  created () {
-    this.$store.dispatch('infographics/fetchItems', {
-      perPage: 1
-    }).then(items => {
-      if (items && items.length) this.infographic = items[0]
+  async created () {
+    this.infographic = await this.$store.dispatch('infographics/fetchItemById', {
+      id: '2AM5T7rzse2T5hNvPNMf'
     })
+    if (this.infographic) {
+      await this.$store.dispatch('infographics/fetchItems', {
+        perPage: 3
+      }).then(items => {
+        this.strippedInfographics = items.filter(x => x.id !== this.infographic.id)
+      })
+    }
   }
 }
 </script>
