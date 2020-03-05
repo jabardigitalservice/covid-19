@@ -61,7 +61,7 @@
           </home-card>
           <home-card>
             <home-card-title>
-              Berita Terbaru
+              Rilis Pers
             </home-card-title>
             <home-article-list/>
           </home-card>
