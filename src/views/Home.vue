@@ -6,14 +6,15 @@
         <div class="lg:pr-8 lg:self-stretch"
              style="flex: 0 0 360px">
           <home-card>
-            <h3 class="cursor:pointer text-center py-8 hover:bg-gray-200">
+            <PrimaryActions :actions="actionsCall"/>
+            <!-- <h3 class="cursor:pointer text-center py-8 hover:bg-gray-200">
               <span class="relative text-2xl uppercase font-bold tracking-wide">
                 <i class="absolute fas fa-phone-alt text-gray-700 text-xl" style="right: calc(100% + 0.5rem); top: 4px;"></i>
-                Call Center
+                Pelaporan
               </span>
               <br>
               <a href="tel:119"><strong class="text-5xl pt-8 tracking-widest">119</strong></a>
-            </h3>
+            </h3> -->
             <!-- <primary-actions :actions="actionsCall"/> -->
             <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
               <span>
@@ -75,12 +76,14 @@
 
 <script>
 import { PHONE_NUMBERS } from '../config'
+import { mapState } from 'vuex'
 
 import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
 import CasualtyStatistics from '../components/CasualtyStatistics'
 import InfographicItemPreview from '../components/InfographicItemPreview'
 import NearestHospitalLocation from '../components/NearestHospitalLocation'
+import PrimaryActions from '../components/PrimaryActions'
 
 const HomeCard = {
   functional: true,
@@ -123,6 +126,7 @@ export default {
     HomeArticleList,
     HomeCard,
     HomeCardTitle,
+    PrimaryActions,
     CasualtyStatistics,
     InfographicItemPreview,
     NearestHospitalLocation
@@ -137,21 +141,21 @@ export default {
       actionsCall: [
         {
           icon: 'fas fa-phone text-2xl text-green-500',
-          title: 'Call Center',
+          title: 'Call Center<br><small>(Nomor Darurat)</small>',
           subtitle: PHONE_NUMBERS.CALL_CENTER,
           tooltip: 'Klik untuk melakukan panggilan telepon',
           to: `tel:${PHONE_NUMBERS.CALL_CENTER}`
         },
+        // {
+        //   icon: 'fas fa-phone text-2xl text-green-500',
+        //   title: 'Kemenkes RI',
+        //   subtitle: PHONE_NUMBERS.KEMENKES_PHONE,
+        //   tooltip: 'Klik untuk melakukan panggilan telepon',
+        //   to: `tel:${PHONE_NUMBERS.KEMENKES_PHONE}`
+        // },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
-          title: 'Kemenkes RI',
-          subtitle: PHONE_NUMBERS.KEMENKES_PHONE,
-          tooltip: 'Klik untuk melakukan panggilan telepon',
-          to: `tel:${PHONE_NUMBERS.KEMENKES_PHONE}`
-        },
-        {
-          icon: 'fas fa-phone text-2xl text-green-500',
-          title: 'Dinkes Jabar',
+          title: 'Dinkes Jabar<br><small>Pertanyaan Umum</small>',
           subtitle: PHONE_NUMBERS.DINKES_JABAR,
           tooltip: 'Klik untuk melakukan panggilan telepon',
           to: `tel:${PHONE_NUMBERS.DINKES_JABAR}`
@@ -159,35 +163,12 @@ export default {
       ],
 
       latestCasualtyStatDate: '3 Maret 2020',
-      casualtyStats: [
-        {
-          color: 'blue-500',
-          title: 'Kasus Aktif',
-          subtitle: '',
-          value: 2
-        },
-        {
-          color: 'green-500',
-          title: 'Sembuh',
-          subtitle: '',
-          value: 0
-        },
-        {
-          color: 'red-500',
-          title: 'Meninggal',
-          subtitle: '',
-          value: 0
-        }
-      ],
-
-      numberOfResponse: 63,
-
       infographic: null,
       strippedInfographics: []
     }
   },
-
   async created () {
+    this.$store.dispatch('stats/fetchData')
     this.infographic = await this.$store.dispatch('infographics/fetchItemById', {
       id: '2AM5T7rzse2T5hNvPNMf'
     })
@@ -197,6 +178,37 @@ export default {
       }).then(items => {
         this.strippedInfographics = items.filter(x => x.id !== this.infographic.id)
       })
+    }
+  },
+
+  computed: {
+    ...mapState('stats', {
+      'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani,
+      'numberOfActiveCases': state => (state.data || {}).kasus_aktif,
+      'numberOfRecoveredPatients': state => (state.data || {}).sembuh,
+      'numberOfDeaths': state => (state.data || {}).meninggal
+    }),
+    casualtyStats () {
+      return [
+        {
+          color: 'blue-500',
+          title: 'Kasus Aktif',
+          subtitle: '',
+          value: this.numberOfActiveCases
+        },
+        {
+          color: 'green-500',
+          title: 'Sembuh',
+          subtitle: '',
+          value: this.numberOfRecoveredPatients
+        },
+        {
+          color: 'red-500',
+          title: 'Meninggal',
+          subtitle: '',
+          value: this.numberOfDeaths
+        }
+      ]
     }
   }
 }
