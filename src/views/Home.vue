@@ -63,6 +63,7 @@
 
 <script>
 import { PHONE_NUMBERS } from '../config'
+import { formatDateShort } from '../lib/date'
 import { mapState } from 'vuex'
 
 import HomeBannerList from '@/components/HomeBannerList'
@@ -142,7 +143,7 @@ export default {
         }
       ],
 
-      latestCasualtyStatDate: '3 Maret 2020',
+      latestCasualtyStatDate: formatDateShort(new Date()),
       infographic: null,
       strippedInfographics: []
     }
