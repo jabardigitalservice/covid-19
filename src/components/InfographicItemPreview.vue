@@ -19,7 +19,7 @@
       </template>
       <template v-else-if="!strip">
         <span class="mr-4 font-bold text-sm text-gray-700 tracking-widest uppercase">
-            Lihat Semua Infografis
+            Selengkapnya
         </span>
         <i class="fa fa-chevron-right"></i>
       </template>
