@@ -15,7 +15,7 @@
                 :
               </span>
               <span class="text-4xl lg:mt-2 text-brand-yellow-lighter">
-                {{numberOfResponse}}
+                154
               </span>
             </h4>
           </home-card>
