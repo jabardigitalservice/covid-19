@@ -15,7 +15,7 @@
                 :
               </span>
               <span class="text-4xl lg:mt-2 text-brand-yellow-lighter">
-                122
+                {{numberOfResponse}}
               </span>
             </h4>
           </home-card>
@@ -148,7 +148,7 @@ export default {
     }
   },
   async created () {
-    this.$store.dispatch('stats/fetchData')
+    await this.$store.dispatch('stats/fetchData')
     this.infographic = await this.$store.dispatch('infographics/fetchItemById', {
       id: '2AM5T7rzse2T5hNvPNMf'
     })
