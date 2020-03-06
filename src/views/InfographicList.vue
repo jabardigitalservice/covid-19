@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-5xl mx-auto sm:px-8">
       <h3 class="my-8 px-8 md font-bold text-xl">
         <a class="cursor-pointer"
            @click.prevent="$router.back()">
@@ -20,12 +20,17 @@
             <img :src="inf.images[0]"
                   class="sm:rounded-lg shadow hover:opacity-50">
           </router-link>
-          <div class="order-1 flex-auto px-8 sm:px-0 mb-4">
-            <h5 class="mt-3 font-bold text-lg leading-snug">
+          <div class="order-1 flex-initial px-8 sm:px-0 mb-4">
+            <h5 class="mt-3 font-bold text-lg leading-normal"
+                style="">
               {{inf.title}}
             </h5>
-            <h6 class="text-sm">
-              {{inf.subtitle}}
+            <h6 v-if="inf.subtitle"
+                class="text-sm">
+              <span class="w-full inline-block overflow-hidden whitespace-no-wrap leading-none"
+                    style="height: 1em; text-overflow: ellipsis;">
+                {{inf.subtitle}}
+              </span>
             </h6>
           </div>
         </li>
