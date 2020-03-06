@@ -11,7 +11,7 @@
     </div>
     <router-link class="inline-flex justify-center items-center px-6 py-4 rounded-full absolute border-white bg-white hover:bg-gray-300"
                 style="box-shadow: 0 12px 64px 0 rgba(0,0,0,0.25); right: 2rem; bottom: 2rem;"
-                :to="`/infographics/${infographic.id}`">
+                :to="`/infographics`">
       <template v-if="strip">
         <span class="inline-block w-6 h-6 flex flex-row justify-center items-center">
           <i class="fa fa-chevron-right"></i>
@@ -19,7 +19,7 @@
       </template>
       <template v-else-if="!strip">
         <span class="mr-4 font-bold text-sm text-gray-700 tracking-widest uppercase">
-            Selengkapnya
+            Lihat Semua Infografis
         </span>
         <i class="fa fa-chevron-right"></i>
       </template>
