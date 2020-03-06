@@ -7,15 +7,6 @@
              style="flex: 0 0 360px">
           <home-card>
             <PrimaryActions :actions="actionsCall"/>
-            <!-- <h3 class="cursor:pointer text-center py-8 hover:bg-gray-200">
-              <span class="relative text-2xl uppercase font-bold tracking-wide">
-                <i class="absolute fas fa-phone-alt text-gray-700 text-xl" style="right: calc(100% + 0.5rem); top: 4px;"></i>
-                Pelaporan
-              </span>
-              <br>
-              <a href="tel:119"><strong class="text-5xl pt-8 tracking-widest">119</strong></a>
-            </h3> -->
-            <!-- <primary-actions :actions="actionsCall"/> -->
             <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
               <span>
                 Pertanyaan Terlayani
@@ -45,10 +36,6 @@
               <h5 class="font-bold text-2xl text-white">
                 Infografis
               </h5>
-              <router-link to="/infographics"
-                          class="text-white uppercase font-bold tracking-widest opacity-75 hover:opacity-100">
-                Lainnya
-              </router-link>
             </div>
             <div class="flex flex-col md:flex-row justify-start items-stretch">
               <div class="flex-auto">
@@ -146,13 +133,6 @@ export default {
           tooltip: 'Klik untuk melakukan panggilan telepon',
           to: `tel:${PHONE_NUMBERS.CALL_CENTER}`
         },
-        // {
-        //   icon: 'fas fa-phone text-2xl text-green-500',
-        //   title: 'Kemenkes RI',
-        //   subtitle: PHONE_NUMBERS.KEMENKES_PHONE,
-        //   tooltip: 'Klik untuk melakukan panggilan telepon',
-        //   to: `tel:${PHONE_NUMBERS.KEMENKES_PHONE}`
-        // },
         {
           icon: 'fas fa-phone text-2xl text-green-500',
           title: 'Dinkes Jabar<br><small>(Pertanyaan Umum)</small>',
