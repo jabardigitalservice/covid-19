@@ -16,7 +16,7 @@
       <br>
       <div class="clearfix">
         <a  :href="main.action_url"
-            target="_blank"
+            @click.prevent.stop="onClick"
             class="float-right text-brand-green-darkest hover:text-green-900 hover:underline font-bold uppercase tracking-widest">
           Buka Rilis Pers
           <i class="fas fa-chevron-right"></i>
@@ -40,7 +40,19 @@ export default {
   methods: {
     ...mapActions('clarifications-list', {
       fetchMainClarification: 'fetchMainClarification'
-    })
+    }),
+    onClick (e) {
+      if (window.innerWidth < 576) {
+        window.open(this.main.action_url, '_blank')
+      } else {
+        this.$router.push({
+          path: '/document-viewer',
+          query: {
+            src: this.main.action_url
+          }
+        })
+      }
+    }
   }
 }
 </script>
