@@ -14,6 +14,12 @@
             <p class="text-xs">Notification</p>
           </router-link>
         </div>
+        <div class="text-center px-2 py-1">
+          <router-link class="no-underline text-gray-700 block" to="/faq">
+            <i class="fas fa-question-circle text-lg" />
+            <p class="text-xs">FAQ</p>
+          </router-link>
+        </div>
       </div>
     </div>
   </div>
