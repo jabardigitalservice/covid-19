@@ -2,17 +2,33 @@
   <div>
     <ul class="casualty-statistics">
       <li v-for="(stat, index) in stats" :key="index"
-         :class="['casualty-statistics__item', `border border-solid border-${stat.color}`]">
-        <h6 class="p-4 sm:mb-2 md:p-0 lg:p-4 lg:mb-0 text-base uppercase tracking-widest text-gray-900 font-bold">
+         class="casualty-statistics__item">
+        <h6 :class="['flex-none w-full sm:mb-2 md:p-0 lg:mb-0 text-base uppercase tracking-widest font-bold', `text-${stat.color}`]">
           {{stat.title}}<br>
           <small v-if="stat.subtitle">
             {{stat.subtitle}}
           </small>
         </h6>
-        <span role="count"
-              :class="['px-6 py-0 text-5xl font-bold', `text-${stat.color}`, `border-l border-solid border-${stat.color} sm:border-none`]">
+        <div class="flex-none w-full flex justify-between items-center text-xl text-gray-900 font-bold border-b border-solid border-gray-300 leading-loose">
+          <label>
+            Jawa Barat
+          </label>
+          <span>
+            {{stat.jabar}}
+          </span>
+        </div>
+        <div class="flex-none w-full flex justify-between items-center text-gray-700 text-lg border-b border-solid border-gray-300 leading-loose">
+          <label>
+            Nasional
+          </label>
+          <span>
+            {{stat.nasional}}
+          </span>
+        </div>
+        <!-- <span role="count"
+              :class="['px-6 py-0 text-5xl font-bold', `text-${stat.color}`]">
           {{stat.value}}
-        </span>
+        </span> -->
         <p v-if="stat.description">
           {{stat.description}}
         </p>
@@ -48,8 +64,8 @@ export default {
 }
 
 .casualty-statistics__item {
-  @apply w-full rounded-lg mb-4
-  flex flex-row justify-between items-center;
+  @apply w-full rounded-lg mb-8
+  flex flex-row flex-wrap justify-between items-center;
 
   @screen sm {
     @apply p-5 block flex-1 text-center
@@ -57,9 +73,8 @@ export default {
   }
 
   @screen lg {
-    @apply w-full rounded-lg mb-4 py-1
+    @apply w-full rounded-lg mb-8 p-0
     flex flex-row justify-between items-center
-    border
     text-left;
   }
 }
