@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { analytics } from '../lib/firebase'
 import { mapState, mapActions } from 'vuex'
 export default {
   data () {
@@ -41,6 +42,7 @@ export default {
     }
   },
   created () {
+    analytics.logEvent('faqs_view')
     this.fetchItems()
   },
   computed: {

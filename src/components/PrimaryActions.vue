@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { analytics } from '../lib/firebase'
 export default {
   props: {
     actions: {
@@ -31,6 +32,9 @@ export default {
   methods: {
     onClick (e, action) {
       if (action.to) {
+        analytics.logEvent('click_call_action', {
+          to: action.to
+        })
         window.open(action.to, '_blank')
       }
     }

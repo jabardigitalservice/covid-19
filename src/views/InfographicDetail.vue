@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { analytics } from '../lib/firebase'
 import { ContentLoader } from 'vue-content-loader'
 
 export default {
@@ -50,6 +51,7 @@ export default {
       this.infographic = null
       this.isLoading = true
       if (id) {
+        analytics.logEvent('infographic_detail_view', { id: id })
         return this.$store.dispatch(`infographics/fetchItemById`, {
           id: id
         }).then(inf => {

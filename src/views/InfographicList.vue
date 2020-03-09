@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { analytics } from '../lib/firebase'
 export default {
   data () {
     return {
@@ -51,6 +52,7 @@ export default {
   },
   methods: {
     fetchItems () {
+      analytics.logEvent('infographic_list_view')
       return this.$store
         .dispatch('infographics/fetchItems', {
           perPage: 8
