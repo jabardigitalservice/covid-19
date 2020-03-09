@@ -22,7 +22,7 @@
           </home-card>
           <home-card>
             <home-card-title>
-              Angka Kejadian di Jawa Barat<br>
+              Angka Kejadian<br>
               <small class="text-base text-gray-600 uppercase font-bold tracking-wide">
                 Per {{latestCasualtyStatDate}}
               </small>
@@ -168,9 +168,9 @@ export default {
   computed: {
     ...mapState('stats', {
       'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani,
-      'numberOfActiveCases': state => (state.data || {}).kasus_aktif,
-      'numberOfRecoveredPatients': state => (state.data || {}).sembuh,
-      'numberOfDeaths': state => (state.data || {}).meninggal
+      'numberOfActiveCases': state => (state.data || {}).aktif || {},
+      'numberOfRecoveredPatients': state => (state.data || {}).sembuh || {},
+      'numberOfDeaths': state => (state.data || {}).meninggal || {}
     }),
     casualtyStats () {
       return [
@@ -178,19 +178,19 @@ export default {
           color: 'blue-500',
           title: 'Kasus Aktif',
           subtitle: '',
-          value: this.numberOfActiveCases
+          ...this.numberOfActiveCases
         },
         {
           color: 'green-500',
           title: 'Sembuh',
           subtitle: '',
-          value: this.numberOfRecoveredPatients
+          ...this.numberOfRecoveredPatients
         },
         {
           color: 'red-500',
           title: 'Meninggal',
           subtitle: '',
-          value: this.numberOfDeaths
+          ...this.numberOfDeaths
         }
       ]
     }
