@@ -11,5 +11,7 @@ export default [
 
   { path: '/messages', name: 'messages', component: page('Messages.vue') },
   { path: '/messages/:id', name: 'messages.detail', component: page('MessageDetail.vue') },
+
+  { path: '/faq', name: 'faq', component: page('Faq.vue') },
   { path: '*', component: page('errors/404.vue') }
 ]
