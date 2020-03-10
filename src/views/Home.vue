@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container py-8 sm:px-4 md:px-8 max-w-6xl mx-auto">
-      <ClarificationMainAlert class="mb-8"/>
+      <ClarificationMainAlert class="mb-8" v-show="false" />
       <home-banner-list/>
       <div class="lg:flex flex-wrap flex-row justify-start items-start">
         <div class="lg:pr-8 lg:self-stretch"
