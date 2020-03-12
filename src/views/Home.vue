@@ -48,7 +48,13 @@
             </div>
           </div>
           <home-card>
-            <NearestHospitalLocation/>
+            <home-card-title>
+              Daftar Rumah Sakit Rujukan<br>
+              <small>
+                di Jawa Barat
+              </small>
+            </home-card-title>
+            <ReferredHospitalList/>
           </home-card>
           <home-card>
             <home-card-title>
@@ -85,7 +91,7 @@ import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
 import CasualtyStatistics from '../components/CasualtyStatistics'
 import InfographicItemPreview from '../components/InfographicItemPreview'
-import NearestHospitalLocation from '../components/NearestHospitalLocation'
+import ReferredHospitalList from '../components/HospitalList'
 import PrimaryActions from '../components/PrimaryActions'
 
 const HomeCard = {
@@ -133,7 +139,7 @@ export default {
     PrimaryActions,
     CasualtyStatistics,
     InfographicItemPreview,
-    NearestHospitalLocation
+    ReferredHospitalList
   },
 
   metaInfo: {
