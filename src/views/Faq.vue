@@ -1,10 +1,9 @@
 <template>
   <main>
     <div class="container py-8 sm:px-4 md:px-8 max-w-6xl mx-auto">
-      <h3 class="text-2xl text-gray-900 px-4 font-bold text-center leading-loose">
+      <h3 class="text-3xl text-gray-900 px-4 font-bold text-left leading-loose">
         Pertanyaan yang Sering Ditanyakan
       </h3>
-      <br>
       <br>
       <div>
         <template v-if="items === null">
