@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <ul class="list-disc list-outside pl-4 pr-8">
+    <ul class="list-none list-outside pl-4 pr-8 hospital-list">
       <li v-for="(item, index) in itemsToShow"
           :key="index"
           class="mb-8">
@@ -10,11 +10,11 @@
         <p>
           {{item.address}}, {{item.city}}
         </p>
-        <p>
+        <p class="text-sm">
           <template v-if="item.phones && item.phones.length">
             <a v-for="(num, index) in item.phones"
               :key="index"
-              class="inline-block px-4 py-1 bg-blue-100 rounded mt-2 mr-2 text-blue-700 hover:opacity-50"
+              class="inline-block px-4 py-1 bg-blue-100 rounded mt-2 mr-2 text-gray-800 hover:opacity-50"
               :href="`tel:${num}`"
               target="_blank"
               :title="`Telpon ${num}`">
@@ -25,7 +25,7 @@
             </a>
           </template>
           <a  v-if="item.web"
-              class="inline-block px-4 py-1 bg-green-100 rounded mt-2 mr-2 text-green-700 hover:opacity-50"
+              class="inline-block px-4 py-1 bg-green-100 rounded mt-2 mr-2 text-gray-800 hover:opacity-50"
               :href="item.web"
               target="_blank"
               :title="`Buka Laman ${item.web}`">
@@ -37,7 +37,7 @@
         </p>
       </li>
     </ul>
-    <div class="-m-4">
+    <div class="-m-4 mt-8">
       <button class="w-full px-6 py-4 rounded bg-blue-500 hover:bg-blue-400 text-white uppercase font-bold tracking-wider"
               :style="{'box-shadow': isCollapsed ? 'none' : '0 -8px 24px 0 #e0e0e0'}"
               @click="isCollapsed = !isCollapsed">
@@ -131,7 +131,7 @@ export default {
   computed: {
     itemsToShow () {
       if (!this.isCollapsed) {
-        return this.hospitals.filter((_, index) => index < 3)
+        return this.hospitals.filter((_, index) => index <= 3)
       }
       return this.hospitals
     }
@@ -139,6 +139,23 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.hospital-list  {
+  @apply block;
 
+  @screen md {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  @screen lg {
+    @apply block;
+  }
+
+  @screen xl {
+    display: grid;
+  }
+}
 </style>
