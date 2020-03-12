@@ -34,8 +34,15 @@ a.router-link-exact-active {
     margin-bottom: 1rem;
   }
 
+  ol {
+    list-style-type: numeral;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
   li {
-    list-style: disc;
     margin-left: 2rem;
   }
 
