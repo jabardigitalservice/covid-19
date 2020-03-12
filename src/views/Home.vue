@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container py-8 sm:px-4 md:px-8 max-w-6xl mx-auto">
-      <ClarificationMainAlert class="mb-8"/>
+      <ClarificationMainAlert class="mb-8" v-show="false" />
       <home-banner-list/>
       <div class="lg:flex flex-wrap flex-row justify-start items-start">
         <div class="lg:pr-8 lg:self-stretch"
@@ -24,7 +24,7 @@
           </home-card>
           <home-card>
             <home-card-title>
-              Angka Kejadian di Jawa Barat<br>
+              Angka Kejadian<br>
               <small class="text-base text-gray-600 uppercase font-bold tracking-wide">
                 Per {{latestCasualtyStatDate}}
               </small>
@@ -170,9 +170,9 @@ export default {
   computed: {
     ...mapState('stats', {
       'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani,
-      'numberOfActiveCases': state => (state.data || {}).kasus_aktif,
-      'numberOfRecoveredPatients': state => (state.data || {}).sembuh,
-      'numberOfDeaths': state => (state.data || {}).meninggal
+      'numberOfActiveCases': state => (state.data || {}).aktif || {},
+      'numberOfRecoveredPatients': state => (state.data || {}).sembuh || {},
+      'numberOfDeaths': state => (state.data || {}).meninggal || {}
     }),
     casualtyStats () {
       return [
@@ -180,19 +180,19 @@ export default {
           color: 'blue-500',
           title: 'Kasus Aktif',
           subtitle: '',
-          value: this.numberOfActiveCases
+          ...this.numberOfActiveCases
         },
         {
           color: 'green-500',
           title: 'Sembuh',
           subtitle: '',
-          value: this.numberOfRecoveredPatients
+          ...this.numberOfRecoveredPatients
         },
         {
           color: 'red-500',
           title: 'Meninggal',
           subtitle: '',
-          value: this.numberOfDeaths
+          ...this.numberOfDeaths
         }
       ]
     }

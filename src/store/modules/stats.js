@@ -15,7 +15,7 @@ export const actions = {
     if (!state.data || fresh) {
       return db
         .collection('statistics')
-        .doc('root')
+        .doc('jabar-dan-nasional')
         .get()
         .then(doc => {
           if (doc.exists) {
