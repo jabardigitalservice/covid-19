@@ -23,7 +23,7 @@
             </header>
             <main v-html="faq.content"
                   v-show="isItemOpen(index)"
-                  class="p-4 md:p-8 text-base bg-white">
+                  class="body-content p-4 md:p-8 text-base bg-white">
             </main>
           </li>
         </ul>
