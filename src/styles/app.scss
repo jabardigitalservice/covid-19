@@ -25,7 +25,8 @@ body.loading {
   overscroll-behavior-y: none;
 }
 
-a.router-link-exact-active {
+a.router-link-exact-active,
+a.router-link-active {
   color: #399F4F;
 }
 
