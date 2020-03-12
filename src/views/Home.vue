@@ -8,17 +8,19 @@
              style="flex: 0 0 360px">
           <home-card>
             <PrimaryActions :actions="actionsCall"/>
-            <h4 class="-m-4 mt-4 py-4 bg-brand-green text-white text-2xl font-bold text-center flex flex-row lg:flex-col justify-center items-center lg:text-xl">
-              <span>
-                Pertanyaan Terlayani
-              </span>
-              <span class="mx-2 lg:hidden">
-                :
-              </span>
+            <div class="-m-4 mt-4 px-8 py-4 bg-brand-green text-white text-2xl font-bold text-left flex flex-row sm:flex-col justify-between items-center lg:text-xl">
+              <h4 class="sm:text-center">
+                <span class="block">
+                  Pertanyaan Terlayani
+                </span>
+                <small class="font-normal">
+                  (Telpon dan Pesan Teks)
+                </small>
+              </h4>
               <span class="text-4xl lg:mt-2 text-brand-yellow-lighter">
                 {{numberOfResponse}}
               </span>
-            </h4>
+            </div>
           </home-card>
           <home-card>
             <home-card-title>
