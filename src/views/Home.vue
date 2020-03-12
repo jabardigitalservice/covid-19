@@ -29,7 +29,7 @@
                 Per {{latestCasualtyStatDate}}
               </small>
             </home-card-title>
-            <casualty-statistics :stats="casualtyStats"/>
+            <casualty-statistics/>
           </home-card>
         </div>
         <div class="flex-1">
@@ -180,33 +180,8 @@ export default {
 
   computed: {
     ...mapState('stats', {
-      'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani,
-      'numberOfActiveCases': state => (state.data || {}).aktif || {},
-      'numberOfRecoveredPatients': state => (state.data || {}).sembuh || {},
-      'numberOfDeaths': state => (state.data || {}).meninggal || {}
-    }),
-    casualtyStats () {
-      return [
-        {
-          color: 'blue-500',
-          title: 'Kasus Aktif',
-          subtitle: '',
-          ...this.numberOfActiveCases
-        },
-        {
-          color: 'green-500',
-          title: 'Sembuh',
-          subtitle: '',
-          ...this.numberOfRecoveredPatients
-        },
-        {
-          color: 'red-500',
-          title: 'Meninggal',
-          subtitle: '',
-          ...this.numberOfDeaths
-        }
-      ]
-    }
+      'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani
+    })
   }
 }
 </script>
