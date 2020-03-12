@@ -52,7 +52,18 @@
           </home-card>
           <home-card>
             <home-card-title>
-              Rilis Pers
+              <div class="flex justify-between items-center">
+                <span>
+                  Rilis Pers
+                </span>
+                <router-link class="inline-flex justify-center items-center px-6 py-4 rounded-full border-white bg-gray-200 hover:bg-gray-300"
+                            to="/articles">
+                  <span class="mr-4 font-bold text-sm text-gray-700 tracking-widest uppercase">
+                      Selengkapnya
+                  </span>
+                  <i class="fa fa-chevron-right"></i>
+                </router-link>
+              </div>
             </home-card-title>
             <home-article-list/>
           </home-card>
