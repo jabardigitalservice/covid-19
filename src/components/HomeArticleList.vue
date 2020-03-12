@@ -1,24 +1,11 @@
 <template>
   <div class="home-banner-list">
     <template v-if="!loading">
-      <div v-for="item in items" :key="item.id" class="w-full p-4">
-          <div class="pb-8 border-b border-solid border-gray-300">
-            <a :href="getArticlePath(item)"
-                @click.prevent="onClick($event, item)"
-                class="cursor-pointer mb-1 text-2xl text-brand-green-darkest font-bold leading-normal hover:underline">
-              {{ item['title'] }}
-            </a>
-            <p class="mb-5 text-base text-gray-700">{{ formatDateTimeShort(item['published_at'].toDate()) }}</p>
-            <div class="article-content" v-html="trimContent(item.content)"></div>
-            <br>
-            <div class="clearfix">
-              <a :href="getArticlePath(item)"
-                  @click.prevent="onClick($event, item)"
-                  class="float-right font-bold uppercase text-sm text-right tracking-widest text-blue-400 hover:text-brand-blue-darkest">
-                Selengkapnya
-              </a>
-            </div>
-          </div>
+      <div v-for="item in items"
+                      :key="item.id">
+          <ArticleListItem :item="item"
+                            class="w-full p-4"/>
+          <hr class="my-4">
       </div>
     </template>
     <template v-else>
@@ -38,41 +25,19 @@
 <script>
 import { ContentLoader } from 'vue-content-loader'
 import { mapGetters } from 'vuex'
-import { formatDateTimeShort } from '@/lib/date'
 
-import _truncate from 'lodash/truncate'
+import ArticleListItem from './HomeArticleListItem'
 
 export default {
   components: {
-    ContentLoader
+    ContentLoader,
+    ArticleListItem
   },
 
   computed: mapGetters({
     loading: 'home-articles/loading',
     items: 'home-articles/items'
-  }),
-
-  methods: {
-    formatDateTimeShort,
-    trimContent (content) {
-      if (typeof content === 'string') {
-        return _truncate(content, {
-          length: 300,
-          omission: '...'
-        })
-      }
-      return content
-    },
-    getArticlePath (article) {
-      if (!article) return ''
-      return `/articles/${article.id}`
-    },
-    onClick (e, article) {
-      this.$router.push({
-        path: this.getArticlePath(article)
-      })
-    }
-  }
+  })
 }
 </script>
 
