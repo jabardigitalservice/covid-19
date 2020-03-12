@@ -4,6 +4,7 @@ function page (path) {
 
 export default [
   { path: '/', name: 'home', component: page('Home.vue') },
+  { path: '/articles', name: 'articles.list', component: page('ArticleList.vue') },
   { path: '/articles/:id', name: 'articles.detail', component: page('ArticleDetail.vue') },
 
   { path: '/infographics', name: 'infographics.list', component: page('InfographicList.vue') },
