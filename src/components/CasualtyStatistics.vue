@@ -60,8 +60,7 @@
                   </p>
                 </div>
                 <div class="py-2 flex flex-wrap justify-between items-baseline">
-                  <label>
-                    Masih dalam<br>Pengawasan
+                  <label v-html="stat.subtitle">
                   </label>
                   <p class="mr-4 text-xl font-bold text-right">
                     {{stat.total.jabar - stat.selesai.jabar}}
@@ -118,15 +117,15 @@ export default {
       const { odp, pdp } = this.data
       return [
         {
-          color: 'blue-500',
+          color: 'orange-500',
           title: 'Pasien dalam Pengawasan<br>(PDP)',
-          subtitle: '',
+          subtitle: 'Masih dalam<br>Pengawasan',
           ...pdp
         },
         {
-          color: 'orange-500',
+          color: 'blue-500',
           title: 'Orang dalam Pemantauan<br>(ODP)',
-          subtitle: '',
+          subtitle: 'Masih dalam<br>Pemantauan',
           ...odp
         }
       ]

@@ -25,9 +25,10 @@
           <home-card>
             <home-card-title>
               Angka Kejadian<br>
-              <small class="text-base text-gray-600 uppercase font-bold tracking-wide">
-                Per {{latestCasualtyStatDate}}
-              </small>
+              <p class="text-base text-gray-600 font-bold tracking-wide leading-normal">
+                Terakhir diperbarui:<br>
+                {{latestCasualtyStatDate}}
+              </p>
             </home-card-title>
             <casualty-statistics/>
           </home-card>
@@ -83,7 +84,7 @@
 
 <script>
 import { PHONE_NUMBERS } from '../config'
-import { formatDateShort } from '../lib/date'
+import { formatDateTimeShort } from '../lib/date'
 import { mapState } from 'vuex'
 
 import ClarificationMainAlert from '@/components/ClarificationMainAlert'
@@ -165,7 +166,6 @@ export default {
         }
       ],
 
-      latestCasualtyStatDate: formatDateShort(new Date()),
       infographic: null,
       strippedInfographics: []
     }
@@ -187,7 +187,11 @@ export default {
   computed: {
     ...mapState('stats', {
       'numberOfResponse': state => (state.data || {}).pertanyaan_terlayani
-    })
+    }),
+    latestCasualtyStatDate () {
+      const date = this.$store.state.stats.updatedAt
+      return date ? formatDateTimeShort(date) : ''
+    }
   }
 }
 </script>
