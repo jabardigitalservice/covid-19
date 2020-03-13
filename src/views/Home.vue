@@ -84,7 +84,7 @@
 
 <script>
 import { PHONE_NUMBERS } from '../config'
-import { formatDateShort, formatDateTimeShort } from '../lib/date'
+import { formatDateTimeShort } from '../lib/date'
 import { mapState } from 'vuex'
 
 import ClarificationMainAlert from '@/components/ClarificationMainAlert'
