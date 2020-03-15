@@ -2,13 +2,12 @@
   <main>
     <div class="container py-8 sm:px-4 md:px-8 max-w-6xl mx-auto">
       <ClarificationMainAlert class="mb-8" v-show="false" />
-      <home-banner-list/>
-      <div class="lg:flex flex-wrap flex-row justify-start items-start">
-        <div class="lg:pr-8 lg:self-stretch"
-             style="flex: 0 0 360px">
+      <div class="w-full flex flex-wrap flex-col justify-start items-start">
+        <home-banner-list class="w-full"/>
+        <div class="w-full flex-auto">
           <home-card>
             <PrimaryActions :actions="actionsCall"/>
-            <div class="-m-4 mt-4 px-8 py-4 bg-brand-green text-white text-2xl font-bold text-left flex flex-row sm:flex-col justify-between items-center lg:text-xl">
+            <div class="mt-4 px-8 py-4 bg-brand-green text-white text-2xl font-bold text-left flex flex-col justify-between items-center lg:text-xl">
               <h4 class="sm:text-center">
                 <span class="block">
                   Pertanyaan Terlayani
@@ -23,31 +22,8 @@
             </div>
           </home-card>
           <home-card>
-            <home-card-title>
-              Angka Kejadian<br>
-              <p class="text-base text-gray-600 font-bold tracking-wide leading-normal">
-                Terakhir diperbarui:<br>
-                {{latestCasualtyStatDate}}
-              </p>
-            </home-card-title>
-            <casualty-statistics/>
+            <PetaSebaranAllCases />
           </home-card>
-        </div>
-        <div class="flex-1">
-          <div v-if="infographic"
-               class="mt-8">
-            <div class="p-8 py-4 md:rounded-tl-lg md:rounded-tr-lg rounded-bl-none rounded-br-none bg-gray-800 flex justify-between items-center">
-              <h5 class="font-bold text-2xl text-white">
-                Infografis
-              </h5>
-            </div>
-            <div class="flex flex-col md:flex-row justify-start items-stretch">
-              <div class="flex-auto">
-                <InfographicItemPreview :infographic="infographic"
-                                        class="flex-auto rounded-none md:rounded-bl-lg md:rounded-br-lg"/>
-              </div>
-            </div>
-          </div>
           <home-card>
             <home-card-title>
               Daftar Rumah Sakit Rujukan<br>
@@ -56,6 +32,23 @@
               </small>
             </home-card-title>
             <ReferredHospitalList/>
+          </home-card>
+          <home-card v-if="infographic">
+            <home-card-title>
+              <div class="flex justify-between items-center">
+                <span>
+                  Lihat Infografis terkait COVID-19
+                </span>
+                <router-link class="inline-flex justify-center items-center px-6 py-4 rounded-full border-white bg-gray-200 hover:bg-gray-300"
+                            to="/infographics">
+                  <span class="mr-4 font-bold text-sm text-gray-700 tracking-widest uppercase">
+                      Selengkapnya
+                  </span>
+                  <i class="fa fa-chevron-right"></i>
+                </router-link>
+              </div>
+            </home-card-title>
+            <InfographicGrid :per-page="3" class="px-4" />
           </home-card>
           <home-card>
             <home-card-title>
@@ -90,10 +83,13 @@ import { mapState } from 'vuex'
 import ClarificationMainAlert from '@/components/ClarificationMainAlert'
 import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
-import CasualtyStatistics from '../components/CasualtyStatistics'
-import InfographicItemPreview from '../components/InfographicItemPreview'
+// import InfographicItemPreview from '../components/InfographicItemPreview'
 import ReferredHospitalList from '../components/HospitalList'
 import PrimaryActions from '../components/PrimaryActions'
+
+import InfographicGrid from '../components/InfographicGrid'
+
+import PetaSebaranAllCases from '../components/Tableau/PetaSebaranAllCases'
 
 const HomeCard = {
   functional: true,
@@ -101,7 +97,7 @@ const HomeCard = {
     const attrs = context.data.attrs || {}
     const staticClass = context.data.staticClass || {}
     const classes = [
-      'overflow-hidden sm:rounded-lg my-8 p-4 shadow-lg',
+      'overflow-hidden sm:rounded-lg my-8 p-4 shadow',
       `bg-${'dark' in attrs ? 'gray-700' : 'white'}`,
       staticClass
     ]
@@ -138,9 +134,10 @@ export default {
     HomeCard,
     HomeCardTitle,
     PrimaryActions,
-    CasualtyStatistics,
-    InfographicItemPreview,
-    ReferredHospitalList
+    // InfographicItemPreview,
+    InfographicGrid,
+    ReferredHospitalList,
+    PetaSebaranAllCases
   },
 
   metaInfo: {
