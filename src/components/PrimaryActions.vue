@@ -1,10 +1,10 @@
 <template>
   <div class="">
-    <ul class="flex flex-col justify-start items-start sm:flex-row md:justify-start md:items-stretch lg:flex-col">
+    <ul class="flex flex-col justify-start items-start sm:flex-row md:justify-start md:items-stretch">
       <li v-for="(action, index) in actions"
           :key="index"
           class="w-full">
-        <a class="block md:flex-1 cursor-pointer p-4 flex flex-row justify-start sm:justify-center lg:justify-start items-center hover:bg-gray-200"
+        <a class="block md:flex-1 cursor-pointer p-4 flex flex-row justify-start sm:justify-center items-center hover:bg-gray-200"
           :href="action.to"
           @click.prevent="onClick($event, action)">
           <i :class="[action.icon, 'mr-6']"></i>

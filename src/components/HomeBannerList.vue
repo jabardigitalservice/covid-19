@@ -84,7 +84,7 @@ export default {
 <style lang="scss">
 @screen sm {
   .VueCarousel-wrapper {
-    @apply rounded-lg overflow-hidden shadow-xl;
+    @apply rounded-lg overflow-hidden shadow;
   }
 }
 .VueCarousel-pagination {
