@@ -39,7 +39,7 @@ export default {
       // const container = this.$el
       // const rect = container.getBoundingClientRect()
       let iframeWidth = '100%'
-      let iframeHeight = `727px`
+      let iframeHeight = `1200px`
       const placeholder = this.$refs.placeholder
       const object = this.$refs.object
       if (window.innerWidth >= 1366) {
@@ -47,7 +47,7 @@ export default {
       } else if (window.innerWidth > 1100) {
         iframeHeight = '1227px'
       } else if (window.innerWidth > 500) {
-        iframeHeight = '900px'
+        iframeHeight = '1200px'
       }
       placeholder.style.width = iframeWidth
       placeholder.style.height = iframeHeight
