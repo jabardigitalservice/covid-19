@@ -22,7 +22,7 @@
             </div>
           </home-card>
           <home-card>
-            <PetaSebaranAllCases />
+            <TableauViz url="https://public.tableau.com/views/PetaSebaranODPPDP-BlueVersion/DashboardMapAllCases?:embed=y&:toolbar=n&:embed_code_version=3&:loadOrderID=0&:display_count=y&:origin=viz_share_link" />
           </home-card>
           <home-card>
             <home-card-title>
@@ -83,13 +83,12 @@ import { mapState } from 'vuex'
 import ClarificationMainAlert from '@/components/ClarificationMainAlert'
 import HomeBannerList from '@/components/HomeBannerList'
 import HomeArticleList from '@/components/HomeArticleList'
-// import InfographicItemPreview from '../components/InfographicItemPreview'
 import ReferredHospitalList from '../components/HospitalList'
 import PrimaryActions from '../components/PrimaryActions'
 
 import InfographicGrid from '../components/InfographicGrid'
 
-import PetaSebaranAllCases from '../components/Tableau/PetaSebaranAllCases'
+import TableauViz from '../components/Tableau/TableauViz'
 
 const HomeCard = {
   functional: true,
@@ -134,10 +133,9 @@ export default {
     HomeCard,
     HomeCardTitle,
     PrimaryActions,
-    // InfographicItemPreview,
     InfographicGrid,
     ReferredHospitalList,
-    PetaSebaranAllCases
+    TableauViz
   },
 
   metaInfo: {
