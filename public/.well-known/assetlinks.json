@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.pikobar.jds",
+      "package_name": "id.go.jabarprov.pikobar",
       "sha256_cert_fingerprints": [
         "C6:08:6D:1A:30:C8:C0:F5:81:50:36:C4:61:BE:03:35:0A:08:3C:DA:A7:57:E4:E2:29:C2:93:5D:DB:5D:1D:3B"
       ]
