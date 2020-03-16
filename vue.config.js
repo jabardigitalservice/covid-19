@@ -13,6 +13,7 @@ module.exports = {
     themeColor: '#399F4F',
     manifestOptions: {
       background_color: '#399F4F',
+      display: 'standalone',
       orientation: 'portrait'
     }
   }
